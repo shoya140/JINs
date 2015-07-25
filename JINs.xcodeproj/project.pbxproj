@@ -21,6 +21,7 @@
 		C61477041B63AE5F000B512D /* poison.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = C61477011B63AE5F000B512D /* poison.mp3 */; };
 		C61477061B63B908000B512D /* walking.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = C61477051B63B908000B512D /* walking.mp3 */; };
 		C61477081B63B9EA000B512D /* running.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = C61477071B63B9EA000B512D /* running.mp3 */; };
+		C614770A1B63BF3C000B512D /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C61477091B63BF3C000B512D /* CoreLocation.framework */; };
 		FF4E62D5844516BC72C225BA /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 22D0C1DDEED309EDC031F163 /* libPods.a */; };
 /* End PBXBuildFile section */
 
@@ -71,6 +72,7 @@
 		C61477011B63AE5F000B512D /* poison.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = poison.mp3; sourceTree = "<group>"; };
 		C61477051B63B908000B512D /* walking.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = walking.mp3; sourceTree = "<group>"; };
 		C61477071B63B9EA000B512D /* running.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = running.mp3; sourceTree = "<group>"; };
+		C61477091B63BF3C000B512D /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -78,6 +80,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C614770A1B63BF3C000B512D /* CoreLocation.framework in Frameworks */,
 				C61476F71B63707D000B512D /* AVFoundation.framework in Frameworks */,
 				C60EC8D11B635E4B0085BA7B /* MEMELib.framework in Frameworks */,
 				FF4E62D5844516BC72C225BA /* libPods.a in Frameworks */,
@@ -106,6 +109,7 @@
 		5C8D9EE0EF74C0E608D98D6B /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				C61477091B63BF3C000B512D /* CoreLocation.framework */,
 				C61476F61B63707D000B512D /* AVFoundation.framework */,
 				22D0C1DDEED309EDC031F163 /* libPods.a */,
 			);

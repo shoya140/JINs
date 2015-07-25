@@ -8,8 +8,9 @@
 
 import UIKit
 import AVFoundation
+import CoreLocation
 
-class JMMapViewController: UIViewController, MEMELibDelegate{
+class JMMapViewController: UIViewController, MEMELibDelegate, CLLocationManagerDelegate{
     
     enum Condition {
         case Walking
@@ -26,9 +27,18 @@ class JMMapViewController: UIViewController, MEMELibDelegate{
     var _runningCount:Int = 0
     var _lastStepTimestamp:NSDate = NSDate()
     
+    var _locationManager = CLLocationManager()
+    var _currentLocation: CLLocation?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         _timerForFetchingStandardData = nil
+        
+        _locationManager.desiredAccuracy = kCLLocationAccuracyBest
+        _locationManager.distanceFilter = 10.0
+        _locationManager.delegate = self
+        startSearchLocation()
     }
     
     override func viewWillAppear(animated: Bool) {
@@ -39,6 +49,24 @@ class JMMapViewController: UIViewController, MEMELibDelegate{
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    func startSearchLocation(){
+        let status = CLLocationManager.authorizationStatus()
+        switch status{
+        case .Restricted, .Denied:
+            break
+        case .NotDetermined:
+            if _locationManager.respondsToSelector("requestWhenInUseAuthorization"){
+                _locationManager.requestWhenInUseAuthorization()
+            }else{
+                _locationManager.startUpdatingLocation()
+            }
+        case .AuthorizedWhenInUse, .AuthorizedAlways:
+            _locationManager.startUpdatingLocation()
+        default:
+            break
+        }
     }
     
     func playSE(file_name:String, stop:Bool){
@@ -106,5 +134,24 @@ class JMMapViewController: UIViewController, MEMELibDelegate{
         MEMELib.sharedInstance().changeDataMode(MEME_COM_REALTIME)
         _timerForFetchingStandardData = nil
     }
-
+    
+    // MARK: - Location Manager Delegates
+    
+    func locationManager(manager: CLLocationManager!, didChangeAuthorizationStatus status: CLAuthorizationStatus) {
+        switch status{
+        case .Restricted, .Denied:
+            manager.stopUpdatingLocation()
+        case .AuthorizedWhenInUse, .AuthorizedAlways:
+            _locationManager.startUpdatingLocation()
+        default:
+            break
+        }
+    }
+    
+    func locationManager(manager: CLLocationManager!, didUpdateLocations locations: [AnyObject]!) {
+        if locations.count > 0{
+            _currentLocation = locations.last as? CLLocation
+            NSLog("lat:\(_currentLocation?.coordinate.latitude) long:\(_currentLocation?.coordinate.longitude)")
+        }
+    }
 }
