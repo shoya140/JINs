@@ -10,9 +10,21 @@ import UIKit
 import AVFoundation
 
 class JMMapViewController: UIViewController, MEMELibDelegate{
-
+    
+    enum Condition {
+        case Walking
+        case Running
+        case BadPosture
+    }
+    
+    @IBOutlet weak var debugTextView: UITextView!
+    
     var _audioPlayer:AVAudioPlayer! = nil
     var _timerForFetchingStandardData:NSTimer?
+    var _condition:Condition = .Walking
+    var _badPostureCount:Int = 0
+    var _runningCount:Int = 0
+    var _lastStepTimestamp:NSDate = NSDate()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -47,6 +59,7 @@ class JMMapViewController: UIViewController, MEMELibDelegate{
     // MARK: - MEMELib Delegates
     
     func memeRealTimeModeDataReceived(data: MEMERealTimeData!) {
+        self.debugTextView.text = NSString(format: "%@", data) as String
         if _timerForFetchingStandardData == nil {
             _timerForFetchingStandardData = NSTimer.scheduledTimerWithTimeInterval(60.0, target: self, selector: Selector("fetchStandardData:"), userInfo: nil, repeats: false)
         }
@@ -55,8 +68,36 @@ class JMMapViewController: UIViewController, MEMELibDelegate{
             // 装着状態に異常あり
             return
         }
+        
         if data.isWalking == 1 {
-            playSE("coin",stop:true);
+            _condition = .Walking
+            if data.pitch > 25 {
+                _badPostureCount += 1
+            }else{
+                _badPostureCount = 0
+            }
+            if _badPostureCount > 2 {
+                _condition = .BadPosture
+            }
+            
+            if Double(NSDate().timeIntervalSinceDate(_lastStepTimestamp)) < 0.5{
+                _runningCount += 1
+            }else{
+                _runningCount = 0
+            }
+            _lastStepTimestamp = NSDate()
+            if _runningCount > 2 {
+                _condition = .Running
+            }
+            
+            switch _condition {
+            case .Running:
+                playSE("running",stop:true)
+            case .BadPosture:
+                playSE("poison",stop:true)
+            default:
+                playSE("coin", stop:true)
+            }
         }
     }
     

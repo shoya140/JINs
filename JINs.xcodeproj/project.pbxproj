@@ -18,6 +18,9 @@
 		C61476F21B636021000B512D /* JMMapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C61476F11B636021000B512D /* JMMapViewController.swift */; };
 		C61476F51B636F95000B512D /* coin.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = C61476F41B636F95000B512D /* coin.mp3 */; };
 		C61476F71B63707D000B512D /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C61476F61B63707D000B512D /* AVFoundation.framework */; };
+		C61477041B63AE5F000B512D /* poison.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = C61477011B63AE5F000B512D /* poison.mp3 */; };
+		C61477061B63B908000B512D /* walking.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = C61477051B63B908000B512D /* walking.mp3 */; };
+		C61477081B63B9EA000B512D /* running.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = C61477071B63B9EA000B512D /* running.mp3 */; };
 		FF4E62D5844516BC72C225BA /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 22D0C1DDEED309EDC031F163 /* libPods.a */; };
 /* End PBXBuildFile section */
 
@@ -65,6 +68,9 @@
 		C61476F11B636021000B512D /* JMMapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JMMapViewController.swift; sourceTree = "<group>"; };
 		C61476F41B636F95000B512D /* coin.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = coin.mp3; sourceTree = "<group>"; };
 		C61476F61B63707D000B512D /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
+		C61477011B63AE5F000B512D /* poison.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = poison.mp3; sourceTree = "<group>"; };
+		C61477051B63B908000B512D /* walking.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = walking.mp3; sourceTree = "<group>"; };
+		C61477071B63B9EA000B512D /* running.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = running.mp3; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -196,6 +202,9 @@
 		C61476F31B636EFA000B512D /* Resource */ = {
 			isa = PBXGroup;
 			children = (
+				C61477071B63B9EA000B512D /* running.mp3 */,
+				C61477051B63B908000B512D /* walking.mp3 */,
+				C61477011B63AE5F000B512D /* poison.mp3 */,
 				C61476F41B636F95000B512D /* coin.mp3 */,
 			);
 			name = Resource;
@@ -290,7 +299,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C61477061B63B908000B512D /* walking.mp3 in Resources */,
 				C60EC8B41B635A760085BA7B /* Main.storyboard in Resources */,
+				C61477041B63AE5F000B512D /* poison.mp3 in Resources */,
+				C61477081B63B9EA000B512D /* running.mp3 in Resources */,
 				C60EC8B91B635A760085BA7B /* LaunchScreen.xib in Resources */,
 				C60EC8B61B635A760085BA7B /* Images.xcassets in Resources */,
 				C61476F51B636F95000B512D /* coin.mp3 in Resources */,

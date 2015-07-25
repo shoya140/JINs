@@ -31,6 +31,11 @@ class JMPreferenceViewController: UIViewController, MEMELibDelegate {
     
     @IBAction func scanButtonTapped(sender: UIBarButtonItem) {
         MEMELib.sharedInstance().startScanningPeripherals()
+        SVProgressHUD.showWithStatus("Scanning")
+    }
+    
+    @IBAction func backButtonTapped(sender: AnyObject) {
+        self.dismissViewControllerAnimated(true, completion: nil)
     }
     
     // MARK: - MEMELib Delegates
