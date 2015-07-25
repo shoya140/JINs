@@ -11,11 +11,12 @@ import AVFoundation
 
 class JMMapViewController: UIViewController, MEMELibDelegate{
 
-    var audioPlayer:AVAudioPlayer! = nil
+    var _audioPlayer:AVAudioPlayer! = nil
+    var _timerForFetchingStandardData:NSTimer?
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        _timerForFetchingStandardData = nil
     }
     
     override func viewWillAppear(animated: Bool) {
@@ -29,23 +30,26 @@ class JMMapViewController: UIViewController, MEMELibDelegate{
     }
     
     func playSE(file_name:String, stop:Bool){
-        
-        if self.audioPlayer != nil && self.audioPlayer.playing == true {
+        if _audioPlayer != nil && _audioPlayer.playing == true {
             if stop == true{
-                self.audioPlayer.stop()
+                _audioPlayer.stop()
             }
         }
-        
         let sound_data = NSURL(fileURLWithPath: NSBundle.mainBundle().pathForResource(file_name, ofType: "mp3")!)
-        self.audioPlayer = AVAudioPlayer(contentsOfURL: sound_data, error: nil)
-        
-        self.audioPlayer.play()
+        _audioPlayer = AVAudioPlayer(contentsOfURL: sound_data, error: nil)
+        _audioPlayer.play()
+    }
+    
+    func fetchStandardData(timer:NSTimer){
+        MEMELib.sharedInstance().changeDataMode(MEME_COM_STANDARD)
     }
     
     // MARK: - MEMELib Delegates
     
     func memeRealTimeModeDataReceived(data: MEMERealTimeData!) {
-        println(data)
+        if _timerForFetchingStandardData == nil {
+            _timerForFetchingStandardData = NSTimer.scheduledTimerWithTimeInterval(60.0, target: self, selector: Selector("fetchStandardData:"), userInfo: nil, repeats: false)
+        }
         
         if data.fitError != 0 {
             // 装着状態に異常あり
@@ -54,6 +58,12 @@ class JMMapViewController: UIViewController, MEMELibDelegate{
         if data.isWalking == 1 {
             playSE("coin",stop:true);
         }
+    }
+    
+    func memeStandardModeDataReceived(data: MEMEStandardData!) {
+        println(data)
+        MEMELib.sharedInstance().changeDataMode(MEME_COM_REALTIME)
+        _timerForFetchingStandardData = nil
     }
 
 }
