@@ -16,6 +16,8 @@ class JMMapViewController: UIViewController, MEMELibDelegate, CLLocationManagerD
         case Walking
         case Running
         case BadPosture
+        case Speepy
+        case LookingAround
     }
     
     enum Step {
@@ -23,13 +25,14 @@ class JMMapViewController: UIViewController, MEMELibDelegate, CLLocationManagerD
         case Left
         case Right
     }
+    
     @IBOutlet weak var saveButton: FUIButton!
     @IBOutlet weak var preferenceButton: FUIButton!
     
     @IBOutlet weak var debugTextView: UITextView!
     @IBOutlet weak var boccoImageView: UIImageView!
     @IBOutlet weak var mapWebView: UIWebView!
-    
+
     var _audioPlayer:AVAudioPlayer! = nil
     var _timerForFetchingStandardData:NSTimer?
     var _condition:Condition = .Walking
@@ -38,6 +41,8 @@ class JMMapViewController: UIViewController, MEMELibDelegate, CLLocationManagerD
     var _lastStepTimestamp:NSDate = NSDate()
     
     var _step:Step = .Stop
+    
+    var _sleepiness:Int = 1 // 1, 2, 3
     
     var _locationManager = CLLocationManager()
     var _currentLocation: CLLocation?
@@ -60,7 +65,7 @@ class JMMapViewController: UIViewController, MEMELibDelegate, CLLocationManagerD
         saveButton.shadowColor = UIColor.greenSeaColor()
         saveButton.shadowHeight = 3.0
         saveButton.cornerRadius = 2.0
-        saveButton.titleLabel!.font = UIFont(name:"PixelMplus12", size: 16)
+        saveButton.titleLabel!.font = UIFont(name:"PixelMplus12", size: 18)
         saveButton.setTitleColor(UIColor.cloudsColor(), forState: UIControlState.Normal)
         saveButton.setTitleColor(UIColor.cloudsColor(), forState: UIControlState.Highlighted)
         
@@ -68,7 +73,7 @@ class JMMapViewController: UIViewController, MEMELibDelegate, CLLocationManagerD
         preferenceButton.shadowColor = UIColor.greenSeaColor()
         preferenceButton.shadowHeight = 3.0
         preferenceButton.cornerRadius = 2.0
-        preferenceButton.titleLabel!.font = UIFont(name:"PixelMplus12", size: 16)
+        preferenceButton.titleLabel!.font = UIFont(name:"PixelMplus12", size: 18)
         preferenceButton.setTitleColor(UIColor.cloudsColor(), forState: UIControlState.Normal)
         preferenceButton.setTitleColor(UIColor.cloudsColor(), forState: UIControlState.Highlighted)
         
@@ -116,6 +121,34 @@ class JMMapViewController: UIViewController, MEMELibDelegate, CLLocationManagerD
     
     func fetchStandardData(timer:NSTimer){
         MEMELib.sharedInstance().changeDataMode(MEME_COM_STANDARD)
+    }
+    
+    func sendMaptipToServer(){
+        // conditionをmaptipに変換して送信する
+        
+        let latitude:Double = _currentLocation!.coordinate.latitude
+        let longtitude:Double = _currentLocation!.coordinate.longitude
+        let timestamp:Double = NSDate().timeIntervalSince1970
+        
+        NSDate().timeIntervalSince1970
+        let params:Dictionary<String, String> = [
+            "userId": "6186A470-0EFA-4CE6-894E-4AAC03B50E03",
+            "mapChipId": "1",
+            "latitude":NSString(format: "%f", latitude) as String,
+            "longtitude":NSString(format: "%f", longtitude) as String,
+            "createDate": NSString(format: "%f", timestamp) as String
+        ]
+        let manager:AFHTTPRequestOperationManager = AFHTTPRequestOperationManager()
+        manager.requestSerializer = AFJSONRequestSerializer()
+        manager.POST("http://nodejs.moe.hm:3000/user_map/", parameters: params,
+            success: {(operation: AFHTTPRequestOperation!, res: AnyObject!) in
+                println("POST Success!!")
+                println(res)
+            },
+            failure: {(operation: AFHTTPRequestOperation!, error: NSError!) in
+                println("Error!!")
+            }
+        )
     }
     
     @IBAction func saveButtonTapped(sender: AnyObject) {
@@ -186,6 +219,7 @@ class JMMapViewController: UIViewController, MEMELibDelegate, CLLocationManagerD
     
     func memeStandardModeDataReceived(data: MEMEStandardData!) {
         println(data)
+        _sleepiness = Int(data.sleepy.value)
         MEMELib.sharedInstance().changeDataMode(MEME_COM_REALTIME)
         _timerForFetchingStandardData = nil
     }
@@ -206,7 +240,7 @@ class JMMapViewController: UIViewController, MEMELibDelegate, CLLocationManagerD
     func locationManager(manager: CLLocationManager!, didUpdateLocations locations: [AnyObject]!) {
         if locations.count > 0{
             _currentLocation = locations.last as? CLLocation
-            NSLog("lat:\(_currentLocation?.coordinate.latitude) long:\(_currentLocation?.coordinate.longitude)")
+            sendMaptipToServer()
         }
     }
 }

@@ -52,7 +52,7 @@ HP: 80/100
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yd6-hm-UJ2" customClass="FUIButton">
                                 <rect key="frame" x="188" y="563" width="180" height="44"/>
                                 <color key="backgroundColor" red="1" green="0.42315317758425652" blue="0.27257253377016155" alpha="1" colorSpace="calibratedRGB"/>
-                                <state key="normal" title="Pairing">
+                                <state key="normal" title="ペアリング">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
