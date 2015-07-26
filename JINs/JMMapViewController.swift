@@ -18,6 +18,12 @@ class JMMapViewController: UIViewController, MEMELibDelegate, CLLocationManagerD
         case BadPosture
     }
     
+    enum Step {
+        case Stop
+        case Left
+        case Right
+    }
+    
     @IBOutlet weak var debugTextView: UITextView!
     @IBOutlet weak var boccoImageView: UIImageView!
     @IBOutlet weak var mapWebView: UIWebView!
@@ -28,6 +34,8 @@ class JMMapViewController: UIViewController, MEMELibDelegate, CLLocationManagerD
     var _badPostureCount:Int = 0
     var _runningCount:Int = 0
     var _lastStepTimestamp:NSDate = NSDate()
+    
+    var _step:Step = .Stop
     
     var _locationManager = CLLocationManager()
     var _currentLocation: CLLocation?
@@ -138,6 +146,15 @@ class JMMapViewController: UIViewController, MEMELibDelegate, CLLocationManagerD
                 playSE("poison",stop:true)
             default:
                 playSE("coin", stop:true)
+            }
+            
+            switch _step{
+            case .Stop, .Left:
+                _step = .Right
+                self.boccoImageView.image = UIImage(named: "bocco_right")
+            case .Right:
+                _step = .Left
+                self.boccoImageView.image = UIImage(named: "bocco_left")
             }
         }
     }
