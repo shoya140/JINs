@@ -157,6 +157,11 @@ class JMMapViewController: UIViewController, MEMELibDelegate, CLLocationManagerD
                 self.boccoImageView.image = UIImage(named: "bocco_left")
             }
         }
+        
+        if Double(NSDate().timeIntervalSinceDate(_lastStepTimestamp)) > 1.2{
+            _step = .Stop
+            self.boccoImageView.image = UIImage(named: "bocco_stop")
+        }
     }
     
     func memeStandardModeDataReceived(data: MEMEStandardData!) {
