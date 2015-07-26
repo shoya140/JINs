@@ -32,7 +32,8 @@ class JMMapViewController: UIViewController, MEMELibDelegate, CLLocationManagerD
     @IBOutlet weak var debugTextView: UITextView!
     @IBOutlet weak var boccoImageView: UIImageView!
     @IBOutlet weak var mapWebView: UIWebView!
-
+    @IBOutlet weak var statusContainerView: UIView!
+    
     var _audioPlayer:AVAudioPlayer! = nil
     var _timerForFetchingStandardData:NSTimer?
     var _condition:Condition = .Walking
@@ -61,23 +62,27 @@ class JMMapViewController: UIViewController, MEMELibDelegate, CLLocationManagerD
         self.mapWebView.loadRequest(request)
         self.view.sendSubviewToBack(self.mapWebView)
         
-        saveButton.buttonColor = UIColor.turquoiseColor()
-        saveButton.shadowColor = UIColor.greenSeaColor()
+        saveButton.buttonColor = UIColor.wetAsphaltColor()
+        saveButton.shadowColor = UIColor.midnightBlueColor()
         saveButton.shadowHeight = 3.0
-        saveButton.cornerRadius = 2.0
-        saveButton.titleLabel!.font = UIFont(name:"PixelMplus12", size: 18)
+        saveButton.cornerRadius = 4.0
+        saveButton.titleLabel!.font = UIFont(name:"PixelMplus12", size: 16)
         saveButton.setTitleColor(UIColor.cloudsColor(), forState: UIControlState.Normal)
         saveButton.setTitleColor(UIColor.cloudsColor(), forState: UIControlState.Highlighted)
         
-        preferenceButton.buttonColor = UIColor.turquoiseColor()
-        preferenceButton.shadowColor = UIColor.greenSeaColor()
+        preferenceButton.buttonColor = UIColor.wetAsphaltColor()
+        preferenceButton.shadowColor = UIColor.midnightBlueColor()
         preferenceButton.shadowHeight = 3.0
-        preferenceButton.cornerRadius = 2.0
-        preferenceButton.titleLabel!.font = UIFont(name:"PixelMplus12", size: 18)
+        preferenceButton.cornerRadius = 4.0
+        preferenceButton.titleLabel!.font = UIFont(name:"PixelMplus12", size: 16)
         preferenceButton.setTitleColor(UIColor.cloudsColor(), forState: UIControlState.Normal)
         preferenceButton.setTitleColor(UIColor.cloudsColor(), forState: UIControlState.Highlighted)
         
         debugTextView.font = UIFont(name:"PixelMplus12", size: 16)
+        statusContainerView.layer.cornerRadius = 5.0
+        statusContainerView.layer.masksToBounds = true
+        statusContainerView.layer.borderColor = UIColor.whiteColor().CGColor
+        statusContainerView.layer.borderWidth = 2.0
     }
     
     override func viewWillAppear(animated: Bool) {
@@ -127,7 +132,7 @@ class JMMapViewController: UIViewController, MEMELibDelegate, CLLocationManagerD
         // conditionをmaptipに変換して送信する
         
         let latitude:Double = _currentLocation!.coordinate.latitude
-        let longtitude:Double = _currentLocation!.coordinate.longitude
+        let longitude:Double = _currentLocation!.coordinate.longitude
         let timestamp:Double = NSDate().timeIntervalSince1970
         
         NSDate().timeIntervalSince1970
@@ -135,12 +140,12 @@ class JMMapViewController: UIViewController, MEMELibDelegate, CLLocationManagerD
             "userId": "6186A470-0EFA-4CE6-894E-4AAC03B50E03",
             "mapChipId": "1",
             "latitude":NSString(format: "%f", latitude) as String,
-            "longtitude":NSString(format: "%f", longtitude) as String,
+            "longitude":NSString(format: "%f", longitude) as String,
             "createDate": NSString(format: "%f", timestamp) as String
         ]
         let manager:AFHTTPRequestOperationManager = AFHTTPRequestOperationManager()
         manager.requestSerializer = AFJSONRequestSerializer()
-        manager.POST("http://nodejs.moe.hm:3000/user_map/", parameters: params,
+        manager.POST("http://10.10.10.131:3000/user_map/", parameters: params,
             success: {(operation: AFHTTPRequestOperation!, res: AnyObject!) in
                 println("POST Success!!")
                 println(res)

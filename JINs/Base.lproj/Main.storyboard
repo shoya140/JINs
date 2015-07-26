@@ -22,41 +22,45 @@
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <webView userInteractionEnabled="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="xvz-nb-b6F">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="555"/>
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                             </webView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="bocco_stop.png" translatesAutoresizingMaskIntoConstraints="NO" id="JSw-Nb-tvq">
-                                <rect key="frame" x="137" y="289" width="100" height="90"/>
+                                <rect key="frame" x="137" y="249" width="100" height="90"/>
                             </imageView>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Zya-3h-fDn">
-                                <rect key="frame" x="10" y="563" width="170" height="96"/>
-                                <color key="backgroundColor" red="0.13216145833333337" green="0.13216145833333337" blue="0.13216145833333337" alpha="1" colorSpace="calibratedRGB"/>
-                                <string key="text">LV: 12
-HP: 80/100
-じょうたい: けんこう
-そうほすう: 123400 </string>
-                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <fontDescription key="fontDescription" name="PixelMplus12-Regular" family="PixelMplus12" pointSize="15"/>
-                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                            </textView>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Hsw-iY-PuK" customClass="FUIButton">
-                                <rect key="frame" x="188" y="615" width="180" height="44"/>
-                                <color key="backgroundColor" red="1" green="0.42315317758425652" blue="0.27257253377016155" alpha="1" colorSpace="calibratedRGB"/>
-                                <state key="normal" title="セーブ">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <action selector="saveButtonTapped:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="XGi-vS-gjL"/>
-                                </connections>
-                            </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yd6-hm-UJ2" customClass="FUIButton">
-                                <rect key="frame" x="188" y="563" width="180" height="44"/>
-                                <color key="backgroundColor" red="1" green="0.42315317758425652" blue="0.27257253377016155" alpha="1" colorSpace="calibratedRGB"/>
+                                <rect key="frame" x="249" y="553" width="116" height="50"/>
                                 <state key="normal" title="ペアリング">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
                                     <segue destination="Vac-Z3-h1B" kind="presentation" modalTransitionStyle="flipHorizontal" id="X7R-GV-Qyu"/>
+                                </connections>
+                            </button>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="IOh-7o-yiC">
+                                <rect key="frame" x="11" y="553" width="233" height="106"/>
+                                <subviews>
+                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Zya-3h-fDn">
+                                        <rect key="frame" x="28" y="8" width="170" height="96"/>
+                                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                        <string key="text">LV: 12
+HP: 80/100
+じょうたい: けんこう
+そうほすう: 123400ほ</string>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <fontDescription key="fontDescription" name="PixelMplus12-Regular" family="PixelMplus12" pointSize="15"/>
+                                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                    </textView>
+                                </subviews>
+                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Hsw-iY-PuK" customClass="FUIButton">
+                                <rect key="frame" x="249" y="607" width="116" height="50"/>
+                                <state key="normal" title="セーブ">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="saveButtonTapped:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="XGi-vS-gjL"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -70,6 +74,7 @@ HP: 80/100
                         <outlet property="mapWebView" destination="xvz-nb-b6F" id="0SM-Gm-Khx"/>
                         <outlet property="preferenceButton" destination="yd6-hm-UJ2" id="gsu-MB-4LC"/>
                         <outlet property="saveButton" destination="Hsw-iY-PuK" id="bD1-DB-lLY"/>
+                        <outlet property="statusContainerView" destination="IOh-7o-yiC" id="HRI-Em-265"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
