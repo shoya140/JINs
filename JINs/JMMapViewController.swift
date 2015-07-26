@@ -100,7 +100,7 @@ class JMMapViewController: UIViewController, MEMELibDelegate, CLLocationManagerD
     
     @IBAction func saveButtonTapped(sender: AnyObject) {
         
-        let info = AccessInfo(id:BOCCO_ACCESS_ID, token: BOCCO_ACCESS_TOKEN, rid: BOCCO_ACCESS_RID);
+        let info = AccessInfo(uid:BOCCO_ACCESS_ID, token: BOCCO_ACCESS_TOKEN, rid: BOCCO_ACCESS_RID);
         let bocco = Bocco();
         bocco.uploadDatas(info)
     }
