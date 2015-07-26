@@ -90,6 +90,13 @@ class JMMapViewController: UIViewController, MEMELibDelegate, CLLocationManagerD
         MEMELib.sharedInstance().changeDataMode(MEME_COM_STANDARD)
     }
     
+    @IBAction func saveButtonTapped(sender: AnyObject) {
+        
+        let info = AccessInfo(id:BOCCO_ACCESS_ID, token: BOCCO_ACCESS_TOKEN, rid: BOCCO_ACCESS_RID);
+        let bocco = Bocco();
+        bocco.uploadDatas(info)
+    }
+    
     // MARK: - MEMELib Delegates
     
     func memeRealTimeModeDataReceived(data: MEMERealTimeData!) {

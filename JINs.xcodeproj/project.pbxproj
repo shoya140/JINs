@@ -22,6 +22,8 @@
 		C61477061B63B908000B512D /* walking.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = C61477051B63B908000B512D /* walking.mp3 */; };
 		C61477081B63B9EA000B512D /* running.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = C61477071B63B9EA000B512D /* running.mp3 */; };
 		C614770A1B63BF3C000B512D /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C61477091B63BF3C000B512D /* CoreLocation.framework */; };
+		C66C42FB1B646EEC00CB857C /* Bocco.swift in Sources */ = {isa = PBXBuildFile; fileRef = C66C42F91B646EEC00CB857C /* Bocco.swift */; };
+		C66C42FC1B646EEC00CB857C /* AccessInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = C66C42FA1B646EEC00CB857C /* AccessInfo.swift */; };
 		C6D1D3421B6456B60093ABA5 /* bocco_red_right.png in Resources */ = {isa = PBXBuildFile; fileRef = C6D1D33C1B6456B60093ABA5 /* bocco_red_right.png */; };
 		C6D1D3431B6456B60093ABA5 /* bocco_red_left.png in Resources */ = {isa = PBXBuildFile; fileRef = C6D1D33D1B6456B60093ABA5 /* bocco_red_left.png */; };
 		C6D1D3441B6456B60093ABA5 /* bocco_red_stop.png in Resources */ = {isa = PBXBuildFile; fileRef = C6D1D33E1B6456B60093ABA5 /* bocco_red_stop.png */; };
@@ -81,6 +83,8 @@
 		C61477051B63B908000B512D /* walking.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = walking.mp3; sourceTree = "<group>"; };
 		C61477071B63B9EA000B512D /* running.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = running.mp3; sourceTree = "<group>"; };
 		C61477091B63BF3C000B512D /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
+		C66C42F91B646EEC00CB857C /* Bocco.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Bocco.swift; sourceTree = "<group>"; };
+		C66C42FA1B646EEC00CB857C /* AccessInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AccessInfo.swift; sourceTree = "<group>"; };
 		C6D1D33C1B6456B60093ABA5 /* bocco_red_right.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bocco_red_right.png; sourceTree = "<group>"; };
 		C6D1D33D1B6456B60093ABA5 /* bocco_red_left.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bocco_red_left.png; sourceTree = "<group>"; };
 		C6D1D33E1B6456B60093ABA5 /* bocco_red_stop.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bocco_red_stop.png; sourceTree = "<group>"; };
@@ -208,6 +212,8 @@
 		C61476EB1B635F6B000B512D /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				C66C42F91B646EEC00CB857C /* Bocco.swift */,
+				C66C42FA1B646EEC00CB857C /* AccessInfo.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -392,6 +398,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C66C42FC1B646EEC00CB857C /* AccessInfo.swift in Sources */,
+				C66C42FB1B646EEC00CB857C /* Bocco.swift in Sources */,
 				C61476F01B63600A000B512D /* JMPreferenceViewController.swift in Sources */,
 				C60EC8AF1B635A760085BA7B /* AppDelegate.swift in Sources */,
 				C61476F21B636021000B512D /* JMMapViewController.swift in Sources */,
