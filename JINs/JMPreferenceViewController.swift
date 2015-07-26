@@ -15,6 +15,10 @@ class JMPreferenceViewController: UIViewController, MEMELibDelegate {
 
         MEMELib.sharedInstance().delegate = self
         MEMELib.sharedInstance().addObserver(self, forKeyPath: "centralManagerEnabled", options: .New, context: nil)
+        
+        // start scanning
+        MEMELib.sharedInstance().startScanningPeripherals()
+        SVProgressHUD.showWithStatus("Scanning")
     }
     
     override func observeValueForKeyPath(keyPath: String, ofObject object: AnyObject, change: [NSObject : AnyObject], context: UnsafeMutablePointer<Void>) {
@@ -29,12 +33,8 @@ class JMPreferenceViewController: UIViewController, MEMELibDelegate {
         // Dispose of any resources that can be recreated.
     }
     
-    @IBAction func scanButtonTapped(sender: UIBarButtonItem) {
-        MEMELib.sharedInstance().startScanningPeripherals()
-        SVProgressHUD.showWithStatus("Scanning")
-    }
-    
     @IBAction func backButtonTapped(sender: AnyObject) {
+        SVProgressHUD.dismiss()
         self.dismissViewControllerAnimated(true, completion: nil)
     }
     

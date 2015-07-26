@@ -2,22 +2,23 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
-	<key>CFBundleName</key>
-	<string>$(PRODUCT_NAME)</string>
+	<key>UIRequiredDeviceCapabilities</key>
+	<array>
+		<string>armv7</string>
+	</array>
 	<key>CFBundleIdentifier</key>
 	<string>shoya140.$(PRODUCT_NAME:rfc1034identifier)</string>
 	<key>NSLocationAlwaysUsageDescription</key>
 	<string>Write the reason why this App. use your location.</string>
+	<key>UIAppFonts</key>
+	<array>
+		<string>PixelMplus12-Regular.ttf</string>
+		<string>PixelMplus12-Bold.ttf</string>
+	</array>
+	<key>UIMainStoryboardFile</key>
+	<string>Main</string>
 	<key>CFBundleInfoDictionaryVersion</key>
 	<string>6.0</string>
-	<key>CFBundleVersion</key>
-	<string>1</string>
-	<key>NSLocationWhenInUseUsageDescription</key>
-	<string>Write the reason why this App. use your location.</string>
-	<key>CFBundleExecutable</key>
-	<string>$(EXECUTABLE_NAME)</string>
-	<key>LSRequiresIPhoneOS</key>
-	<true/>
 	<key>UIBackgroundModes</key>
 	<array>
 		<string>audio</string>
@@ -25,25 +26,29 @@
 	</array>
 	<key>UILaunchStoryboardName</key>
 	<string>LaunchScreen</string>
-	<key>UIMainStoryboardFile</key>
-	<string>Main</string>
-	<key>UIRequiredDeviceCapabilities</key>
-	<array>
-		<string>armv7</string>
-	</array>
+	<key>LSRequiresIPhoneOS</key>
+	<true/>
+	<key>CFBundleExecutable</key>
+	<string>$(EXECUTABLE_NAME)</string>
+	<key>CFBundleVersion</key>
+	<string>1</string>
 	<key>UISupportedInterfaceOrientations</key>
 	<array>
 		<string>UIInterfaceOrientationPortrait</string>
 		<string>UIInterfaceOrientationLandscapeLeft</string>
 		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
+	<key>CFBundleShortVersionString</key>
+	<string>1.0</string>
+	<key>CFBundleName</key>
+	<string>$(PRODUCT_NAME)</string>
 	<key>CFBundleSignature</key>
 	<string>????</string>
 	<key>CFBundlePackageType</key>
 	<string>APPL</string>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>en</string>
-	<key>CFBundleShortVersionString</key>
-	<string>1.0</string>
+	<key>NSLocationWhenInUseUsageDescription</key>
+	<string>Write the reason why this App. use your location.</string>
 </dict>
 </plist>

@@ -22,6 +22,14 @@
 		C61477061B63B908000B512D /* walking.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = C61477051B63B908000B512D /* walking.mp3 */; };
 		C61477081B63B9EA000B512D /* running.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = C61477071B63B9EA000B512D /* running.mp3 */; };
 		C614770A1B63BF3C000B512D /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C61477091B63BF3C000B512D /* CoreLocation.framework */; };
+		C6D1D3421B6456B60093ABA5 /* bocco_red_right.png in Resources */ = {isa = PBXBuildFile; fileRef = C6D1D33C1B6456B60093ABA5 /* bocco_red_right.png */; };
+		C6D1D3431B6456B60093ABA5 /* bocco_red_left.png in Resources */ = {isa = PBXBuildFile; fileRef = C6D1D33D1B6456B60093ABA5 /* bocco_red_left.png */; };
+		C6D1D3441B6456B60093ABA5 /* bocco_red_stop.png in Resources */ = {isa = PBXBuildFile; fileRef = C6D1D33E1B6456B60093ABA5 /* bocco_red_stop.png */; };
+		C6D1D3451B6456B60093ABA5 /* bocco_right.png in Resources */ = {isa = PBXBuildFile; fileRef = C6D1D33F1B6456B60093ABA5 /* bocco_right.png */; };
+		C6D1D3461B6456B60093ABA5 /* bocco_left.png in Resources */ = {isa = PBXBuildFile; fileRef = C6D1D3401B6456B60093ABA5 /* bocco_left.png */; };
+		C6D1D3471B6456B60093ABA5 /* bocco_stop.png in Resources */ = {isa = PBXBuildFile; fileRef = C6D1D3411B6456B60093ABA5 /* bocco_stop.png */; };
+		C6D1D3491B64662E0093ABA5 /* PixelMplus12-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C6D1D3481B64662E0093ABA5 /* PixelMplus12-Regular.ttf */; };
+		C6D1D34B1B6467AC0093ABA5 /* PixelMplus12-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C6D1D34A1B6467AC0093ABA5 /* PixelMplus12-Bold.ttf */; };
 		FF4E62D5844516BC72C225BA /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 22D0C1DDEED309EDC031F163 /* libPods.a */; };
 /* End PBXBuildFile section */
 
@@ -73,6 +81,14 @@
 		C61477051B63B908000B512D /* walking.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = walking.mp3; sourceTree = "<group>"; };
 		C61477071B63B9EA000B512D /* running.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = running.mp3; sourceTree = "<group>"; };
 		C61477091B63BF3C000B512D /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
+		C6D1D33C1B6456B60093ABA5 /* bocco_red_right.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bocco_red_right.png; sourceTree = "<group>"; };
+		C6D1D33D1B6456B60093ABA5 /* bocco_red_left.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bocco_red_left.png; sourceTree = "<group>"; };
+		C6D1D33E1B6456B60093ABA5 /* bocco_red_stop.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bocco_red_stop.png; sourceTree = "<group>"; };
+		C6D1D33F1B6456B60093ABA5 /* bocco_right.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bocco_right.png; sourceTree = "<group>"; };
+		C6D1D3401B6456B60093ABA5 /* bocco_left.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bocco_left.png; sourceTree = "<group>"; };
+		C6D1D3411B6456B60093ABA5 /* bocco_stop.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bocco_stop.png; sourceTree = "<group>"; };
+		C6D1D3481B64662E0093ABA5 /* PixelMplus12-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "PixelMplus12-Regular.ttf"; sourceTree = "<group>"; };
+		C6D1D34A1B6467AC0093ABA5 /* PixelMplus12-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "PixelMplus12-Bold.ttf"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -206,6 +222,14 @@
 		C61476F31B636EFA000B512D /* Resource */ = {
 			isa = PBXGroup;
 			children = (
+				C6D1D3481B64662E0093ABA5 /* PixelMplus12-Regular.ttf */,
+				C6D1D34A1B6467AC0093ABA5 /* PixelMplus12-Bold.ttf */,
+				C6D1D33C1B6456B60093ABA5 /* bocco_red_right.png */,
+				C6D1D33D1B6456B60093ABA5 /* bocco_red_left.png */,
+				C6D1D33E1B6456B60093ABA5 /* bocco_red_stop.png */,
+				C6D1D33F1B6456B60093ABA5 /* bocco_right.png */,
+				C6D1D3401B6456B60093ABA5 /* bocco_left.png */,
+				C6D1D3411B6456B60093ABA5 /* bocco_stop.png */,
 				C61477071B63B9EA000B512D /* running.mp3 */,
 				C61477051B63B908000B512D /* walking.mp3 */,
 				C61477011B63AE5F000B512D /* poison.mp3 */,
@@ -304,12 +328,20 @@
 			buildActionMask = 2147483647;
 			files = (
 				C61477061B63B908000B512D /* walking.mp3 in Resources */,
+				C6D1D3471B6456B60093ABA5 /* bocco_stop.png in Resources */,
+				C6D1D3461B6456B60093ABA5 /* bocco_left.png in Resources */,
+				C6D1D3491B64662E0093ABA5 /* PixelMplus12-Regular.ttf in Resources */,
 				C60EC8B41B635A760085BA7B /* Main.storyboard in Resources */,
 				C61477041B63AE5F000B512D /* poison.mp3 in Resources */,
+				C6D1D34B1B6467AC0093ABA5 /* PixelMplus12-Bold.ttf in Resources */,
+				C6D1D3421B6456B60093ABA5 /* bocco_red_right.png in Resources */,
+				C6D1D3451B6456B60093ABA5 /* bocco_right.png in Resources */,
+				C6D1D3441B6456B60093ABA5 /* bocco_red_stop.png in Resources */,
 				C61477081B63B9EA000B512D /* running.mp3 in Resources */,
 				C60EC8B91B635A760085BA7B /* LaunchScreen.xib in Resources */,
 				C60EC8B61B635A760085BA7B /* Images.xcassets in Resources */,
 				C61476F51B636F95000B512D /* coin.mp3 in Resources */,
+				C6D1D3431B6456B60093ABA5 /* bocco_red_left.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

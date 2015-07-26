@@ -1,25 +1,14 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7706" systemVersion="14E46" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="CLw-9H-m2x">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7706" systemVersion="14E46" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="vXZ-lx-hvc">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
     </dependencies>
+    <customFonts key="customFonts">
+        <mutableArray key="PixelMplus12-Regular.ttf">
+            <string>PixelMplus12-Regular</string>
+        </mutableArray>
+    </customFonts>
     <scenes>
-        <!--Navigation Controller-->
-        <scene sceneID="8ox-al-Pby">
-            <objects>
-                <navigationController id="CLw-9H-m2x" sceneMemberID="viewController">
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="N32-cN-bkV">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <connections>
-                        <segue destination="vXZ-lx-hvc" kind="relationship" relationship="rootViewController" id="JEl-eP-nv7"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="xL9-OT-9cr" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-414" y="267"/>
-        </scene>
         <!--Map View Controller-->
         <scene sceneID="ufC-wZ-h7g">
             <objects>
@@ -29,55 +18,50 @@
                         <viewControllerLayoutGuide type="bottom" id="2fi-mo-0CV"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="kh9-bI-dsS">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Y9N-zd-hoq">
-                                <rect key="frame" x="10" y="0.0" width="580" height="600"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                            <webView userInteractionEnabled="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="xvz-nb-b6F">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                            </webView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="bocco_stop.png" translatesAutoresizingMaskIntoConstraints="NO" id="JSw-Nb-tvq">
+                                <rect key="frame" x="137" y="289" width="100" height="90"/>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yd6-hm-UJ2">
+                                <rect key="frame" x="304" y="612" width="48" height="30"/>
+                                <state key="normal" title="Pairing">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <segue destination="Vac-Z3-h1B" kind="presentation" modalTransitionStyle="flipHorizontal" id="X7R-GV-Qyu"/>
+                                </connections>
+                            </button>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Zya-3h-fDn">
+                                <rect key="frame" x="16" y="547" width="180" height="95"/>
+                                <color key="backgroundColor" red="0.13216145833333337" green="0.13216145833333337" blue="0.13216145833333337" alpha="1" colorSpace="calibratedRGB"/>
+                                <string key="text">LV: 12
+HP: 80/100
+じょうたい: けんこう
+そうほすう: 123400 </string>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <fontDescription key="fontDescription" name="PixelMplus12-Regular" family="PixelMplus12" pointSize="15"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
-                        <constraints>
-                            <constraint firstItem="2fi-mo-0CV" firstAttribute="top" secondItem="Y9N-zd-hoq" secondAttribute="bottom" id="48d-Ch-DxV"/>
-                            <constraint firstAttribute="trailing" secondItem="Y9N-zd-hoq" secondAttribute="trailing" constant="10" id="Xf6-2B-0EB"/>
-                            <constraint firstItem="Y9N-zd-hoq" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leading" constant="10" id="dUU-sb-w7A"/>
-                            <constraint firstItem="Y9N-zd-hoq" firstAttribute="top" secondItem="kh9-bI-dsS" secondAttribute="top" id="m7H-Nm-3x0"/>
-                        </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="arX-sY-zW7">
-                        <barButtonItem key="leftBarButtonItem" title="Preference" id="v5Q-0h-wtu">
-                            <connections>
-                                <segue destination="tFI-Hy-2QW" kind="presentation" modalTransitionStyle="flipHorizontal" id="rU7-XF-3tj"/>
-                            </connections>
-                        </barButtonItem>
-                    </navigationItem>
+                    <navigationItem key="navigationItem" id="arX-sY-zW7"/>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
                     <connections>
-                        <outlet property="debugTextView" destination="Y9N-zd-hoq" id="1dl-tB-K60"/>
+                        <outlet property="boccoImageView" destination="JSw-Nb-tvq" id="bWu-cK-zfC"/>
+                        <outlet property="debugTextView" destination="Zya-3h-fDn" id="FNq-WY-mUl"/>
+                        <outlet property="mapWebView" destination="xvz-nb-b6F" id="0SM-Gm-Khx"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="268" y="267"/>
-        </scene>
-        <!--Navigation Controller-->
-        <scene sceneID="F2s-ez-Cxc">
-            <objects>
-                <navigationController id="tFI-Hy-2QW" sceneMemberID="viewController">
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="Z4v-89-U3V">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <connections>
-                        <segue destination="Vac-Z3-h1B" kind="relationship" relationship="rootViewController" id="4z9-bT-kVs"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="e3m-hY-CJX" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="956" y="272"/>
+            <point key="canvasLocation" x="267.5" y="266.5"/>
         </scene>
         <!--Preference View Controller-->
         <scene sceneID="DYs-cQ-se0">
@@ -88,26 +72,30 @@
                         <viewControllerLayoutGuide type="bottom" id="MZU-0b-7Vp"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="4xl-3Y-bXH">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UqC-6J-kaP">
+                                <rect key="frame" x="324" y="617" width="35" height="30"/>
+                                <state key="normal" title="Back">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="backButtonTapped:" destination="Vac-Z3-h1B" eventType="touchUpInside" id="map-Wi-BOy"/>
+                                </connections>
+                            </button>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
-                    <navigationItem key="navigationItem" id="Uwc-v7-aeW">
-                        <barButtonItem key="leftBarButtonItem" title="Back" id="Kn4-Mx-HdM">
-                            <connections>
-                                <action selector="backButtonTapped:" destination="Vac-Z3-h1B" id="XQx-I0-wWe"/>
-                            </connections>
-                        </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" title="Scan" id="bLf-px-55v">
-                            <connections>
-                                <action selector="scanButtonTapped:" destination="Vac-Z3-h1B" id="oem-VP-s4V"/>
-                            </connections>
-                        </barButtonItem>
-                    </navigationItem>
+                    <navigationItem key="navigationItem" id="Uwc-v7-aeW"/>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gmt-p2-hbc" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1772" y="267"/>
+            <point key="canvasLocation" x="781.5" y="266.5"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="bocco_stop.png" width="192" height="192"/>
+    </resources>
 </document>

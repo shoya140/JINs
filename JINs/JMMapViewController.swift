@@ -19,6 +19,8 @@ class JMMapViewController: UIViewController, MEMELibDelegate, CLLocationManagerD
     }
     
     @IBOutlet weak var debugTextView: UITextView!
+    @IBOutlet weak var boccoImageView: UIImageView!
+    @IBOutlet weak var mapWebView: UIWebView!
     
     var _audioPlayer:AVAudioPlayer! = nil
     var _timerForFetchingStandardData:NSTimer?
@@ -39,6 +41,10 @@ class JMMapViewController: UIViewController, MEMELibDelegate, CLLocationManagerD
         _locationManager.distanceFilter = 10.0
         _locationManager.delegate = self
         startSearchLocation()
+        
+        let request = NSURLRequest(URL: NSURL(string: "http://nodejs.moe.hm:3000/")!)
+        self.mapWebView.loadRequest(request)
+        self.view.sendSubviewToBack(self.mapWebView)
     }
     
     override func viewWillAppear(animated: Bool) {
