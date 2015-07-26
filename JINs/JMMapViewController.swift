@@ -50,6 +50,9 @@ class JMMapViewController: UIViewController, MEMELibDelegate, CLLocationManagerD
     var _locationManager = CLLocationManager()
     var _currentLocation: CLLocation?
     
+    var _stepCount = 12340
+    var _isNuma = false
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -60,7 +63,7 @@ class JMMapViewController: UIViewController, MEMELibDelegate, CLLocationManagerD
         _locationManager.delegate = self
         startSearchLocation()
         
-        let request = NSURLRequest(URL: NSURL(string: "http://10.10.10.131:3000/")!)
+        let request = NSURLRequest(URL: NSURL(string: "http://nodejs.moe.hm:3000/")!)
         self.mapWebView.loadRequest(request)
         self.view.sendSubviewToBack(self.mapWebView)
         
@@ -131,17 +134,23 @@ class JMMapViewController: UIViewController, MEMELibDelegate, CLLocationManagerD
         let longitude:Double = _currentLocation!.coordinate.longitude
         let timestamp:Double = NSDate().timeIntervalSince1970
         
+        var map:String = "10"
+        if _isNuma {
+            map = "20"
+        }
+        _isNuma = false
+        
         NSDate().timeIntervalSince1970
         let params:Dictionary<String, String> = [
             "userId": "6186A470-0EFA-4CE6-894E-4AAC03B50E03",
-            "mapChipId": "1",
+            "mapChipId": map,
             "latitude":NSString(format: "%f", latitude) as String,
             "longitude":NSString(format: "%f", longitude) as String,
             "createDate": NSString(format: "%f", timestamp) as String
         ]
         let manager:AFHTTPRequestOperationManager = AFHTTPRequestOperationManager()
         manager.requestSerializer = AFJSONRequestSerializer()
-        manager.POST("http://10.10.10.131:3000/user_map/", parameters: params,
+        manager.POST("http://nodejs.moe.hm:3000/user_map/", parameters: params,
             success: {(operation: AFHTTPRequestOperation!, res: AnyObject!) in
                 println("POST Success!!")
                 println(res)
@@ -166,7 +175,6 @@ class JMMapViewController: UIViewController, MEMELibDelegate, CLLocationManagerD
     // MARK: - MEMELib Delegates
     
     func memeRealTimeModeDataReceived(data: MEMERealTimeData!) {
-        self.debugTextView.text = NSString(format: "%@", data) as String
         if _timerForFetchingStandardData == nil {
             _timerForFetchingStandardData = NSTimer.scheduledTimerWithTimeInterval(60.0, target: self, selector: Selector("fetchStandardData:"), userInfo: nil, repeats: false)
         }
@@ -183,8 +191,9 @@ class JMMapViewController: UIViewController, MEMELibDelegate, CLLocationManagerD
             }else{
                 _badPostureCount = 0
             }
-            if _badPostureCount > 2 {
+            if _badPostureCount > 3 {
                 _condition = .BadPosture
+                _isNuma = true
             }
             
             if Double(NSDate().timeIntervalSinceDate(_lastStepTimestamp)) < 0.5{
@@ -214,6 +223,10 @@ class JMMapViewController: UIViewController, MEMELibDelegate, CLLocationManagerD
                 _step = .Left
                 self.boccoImageView.image = UIImage(named: "bocco_left")
             }
+            
+            _stepCount += 1
+            var text = NSString(format:"ＬＶ: 12\nＨＰ: 60/100\nじょうたい: けんこう\nそうほすう: %dほ", _stepCount) as String
+            self.debugTextView.text = text
         }
         
         if Double(NSDate().timeIntervalSinceDate(_lastStepTimestamp)) > 1.2{
