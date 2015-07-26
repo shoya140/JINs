@@ -26,13 +26,15 @@ class JMMapViewController: UIViewController, MEMELibDelegate, CLLocationManagerD
         case Right
     }
     
-    @IBOutlet weak var saveButton: FUIButton!
-    @IBOutlet weak var preferenceButton: FUIButton!
+    @IBOutlet weak var saveButton: UIButton!
+    @IBOutlet weak var preferenceButton: UIButton!
     
     @IBOutlet weak var debugTextView: UITextView!
     @IBOutlet weak var boccoImageView: UIImageView!
     @IBOutlet weak var mapWebView: UIWebView!
     @IBOutlet weak var statusContainerView: UIView!
+    @IBOutlet weak var saveContainerView: UIView!
+    @IBOutlet weak var preferenceContainerView: UIView!
     
     var _audioPlayer:AVAudioPlayer! = nil
     var _timerForFetchingStandardData:NSTimer?
@@ -58,31 +60,25 @@ class JMMapViewController: UIViewController, MEMELibDelegate, CLLocationManagerD
         _locationManager.delegate = self
         startSearchLocation()
         
-        let request = NSURLRequest(URL: NSURL(string: "http://nodejs.moe.hm:3000/")!)
+        let request = NSURLRequest(URL: NSURL(string: "http://10.10.10.131:3000/")!)
         self.mapWebView.loadRequest(request)
         self.view.sendSubviewToBack(self.mapWebView)
         
-        saveButton.buttonColor = UIColor.wetAsphaltColor()
-        saveButton.shadowColor = UIColor.midnightBlueColor()
-        saveButton.shadowHeight = 3.0
-        saveButton.cornerRadius = 4.0
-        saveButton.titleLabel!.font = UIFont(name:"PixelMplus12", size: 16)
-        saveButton.setTitleColor(UIColor.cloudsColor(), forState: UIControlState.Normal)
-        saveButton.setTitleColor(UIColor.cloudsColor(), forState: UIControlState.Highlighted)
-        
-        preferenceButton.buttonColor = UIColor.wetAsphaltColor()
-        preferenceButton.shadowColor = UIColor.midnightBlueColor()
-        preferenceButton.shadowHeight = 3.0
-        preferenceButton.cornerRadius = 4.0
-        preferenceButton.titleLabel!.font = UIFont(name:"PixelMplus12", size: 16)
-        preferenceButton.setTitleColor(UIColor.cloudsColor(), forState: UIControlState.Normal)
-        preferenceButton.setTitleColor(UIColor.cloudsColor(), forState: UIControlState.Highlighted)
-        
-        debugTextView.font = UIFont(name:"PixelMplus12", size: 16)
+        debugTextView.font = UIFont(name:"PixelMplus12", size: 18)
         statusContainerView.layer.cornerRadius = 5.0
         statusContainerView.layer.masksToBounds = true
         statusContainerView.layer.borderColor = UIColor.whiteColor().CGColor
         statusContainerView.layer.borderWidth = 2.0
+        
+        saveContainerView.layer.cornerRadius = 5.0
+        saveContainerView.layer.masksToBounds = true
+        saveContainerView.layer.borderColor = UIColor.whiteColor().CGColor
+        saveContainerView.layer.borderWidth = 2.0
+        
+        preferenceContainerView.layer.cornerRadius = 5.0
+        preferenceContainerView.layer.masksToBounds = true
+        preferenceContainerView.layer.borderColor = UIColor.whiteColor().CGColor
+        preferenceContainerView.layer.borderWidth = 2.0
     }
     
     override func viewWillAppear(animated: Bool) {
@@ -157,10 +153,14 @@ class JMMapViewController: UIViewController, MEMELibDelegate, CLLocationManagerD
     }
     
     @IBAction func saveButtonTapped(sender: AnyObject) {
-        
         let info = AccessInfo(id:BOCCO_ACCESS_ID, token: BOCCO_ACCESS_TOKEN, rid: BOCCO_ACCESS_RID);
         let bocco = Bocco();
         bocco.uploadDatas(info)
+        
+        var alert: UIAlertController = UIAlertController(title: "セーブ完了", message: "Boccoが冒険の記録を教えてくれるよ", preferredStyle: UIAlertControllerStyle.Alert)
+        let cancel: UIAlertAction = UIAlertAction(title: "OK", style: UIAlertActionStyle.Cancel, handler:nil)
+        alert.addAction(cancel)
+        presentViewController(alert, animated: true, completion: nil)
     }
     
     // MARK: - MEMELib Delegates
