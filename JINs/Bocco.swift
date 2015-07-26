@@ -10,7 +10,7 @@ import Foundation
 
 class Bocco {
     
-    private var accessInfo:AccessInfo = AccessInfo(id: "", token: "", rid: "")
+    private var accessInfo:AccessInfo = AccessInfo(uid: "", token: "", rid: "")
     
     private var appServerUrlString = "http://nodejs.moe.hm:3000/user_activity_log_summary"
     
@@ -19,7 +19,7 @@ class Bocco {
     internal func uploadDatas(info:AccessInfo) {
         accessInfo = info
         
-        let paramId = "?id=" + accessInfo.getId()
+        let paramId = "?userId=" + accessInfo.getUserId()
         appServerUrlString += paramId
         let url = NSURL(string: appServerUrlString)!
         let request = NSMutableURLRequest(URL: url)
@@ -62,7 +62,7 @@ class Bocco {
         let params = paramToken + paramText + paramUniqueId + paramMedia
         let uploadData = params.dataUsingEncoding(NSUTF8StringEncoding)
         request.HTTPBody = uploadData
-        
+
         let task = NSURLSession.sharedSession().dataTaskWithRequest(request, completionHandler: {data, response, error in
             if (error == nil) {
                 let result = NSString(data: data!, encoding: NSUTF8StringEncoding)!

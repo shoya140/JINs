@@ -10,24 +10,23 @@ import Foundation
 
 class AccessInfo {
     
-    private var id:String = ""
+    private var userId:String = ""
     private var accessToken:String = ""
     private var roomId:String = ""
     
-    init(id:String, token:String, rid:String) {
-        self.id = id
+    init(uid:String, token:String, rid:String) {
+        self.userId = uid
         self.accessToken = token
         self.roomId = rid
     }
     
-    func setId(id:String) {
-        self.id = id
+    func setUserId(id:String) {
+        self.userId = id
     }
     
-    func getId() -> String {
-        return id
+    func getUserId() -> String {
+        return userId
     }
-
     
     func setAccessToken(token:String) {
         self.accessToken = token

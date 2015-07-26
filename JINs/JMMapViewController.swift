@@ -50,7 +50,7 @@ class JMMapViewController: UIViewController, MEMELibDelegate, CLLocationManagerD
     var _locationManager = CLLocationManager()
     var _currentLocation: CLLocation?
     
-    var _stepCount = 12340
+    var _stepCount = 140
     var _isNuma = false
     
     override func viewDidLoad() {
@@ -162,7 +162,7 @@ class JMMapViewController: UIViewController, MEMELibDelegate, CLLocationManagerD
     }
     
     @IBAction func saveButtonTapped(sender: AnyObject) {
-        let info = AccessInfo(id:BOCCO_ACCESS_ID, token: BOCCO_ACCESS_TOKEN, rid: BOCCO_ACCESS_RID);
+        let info = AccessInfo(uid:BOCCO_ACCESS_ID, token: BOCCO_ACCESS_TOKEN, rid: BOCCO_ACCESS_RID);
         let bocco = Bocco();
         bocco.uploadDatas(info)
         
