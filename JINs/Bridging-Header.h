@@ -12,6 +12,7 @@
 #import "JMKey.h"
 #import "AFNetworking.h"
 #import "SVProgressHUD.h"
+#import "FlatUIKit.h"
 #import <MEMELib/MEMELib.h>
 
 #endif

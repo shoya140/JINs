@@ -23,6 +23,8 @@ class JMMapViewController: UIViewController, MEMELibDelegate, CLLocationManagerD
         case Left
         case Right
     }
+    @IBOutlet weak var saveButton: FUIButton!
+    @IBOutlet weak var preferenceButton: FUIButton!
     
     @IBOutlet weak var debugTextView: UITextView!
     @IBOutlet weak var boccoImageView: UIImageView!
@@ -53,6 +55,24 @@ class JMMapViewController: UIViewController, MEMELibDelegate, CLLocationManagerD
         let request = NSURLRequest(URL: NSURL(string: "http://nodejs.moe.hm:3000/")!)
         self.mapWebView.loadRequest(request)
         self.view.sendSubviewToBack(self.mapWebView)
+        
+        saveButton.buttonColor = UIColor.turquoiseColor()
+        saveButton.shadowColor = UIColor.greenSeaColor()
+        saveButton.shadowHeight = 3.0
+        saveButton.cornerRadius = 2.0
+        saveButton.titleLabel!.font = UIFont(name:"PixelMplus12", size: 16)
+        saveButton.setTitleColor(UIColor.cloudsColor(), forState: UIControlState.Normal)
+        saveButton.setTitleColor(UIColor.cloudsColor(), forState: UIControlState.Highlighted)
+        
+        preferenceButton.buttonColor = UIColor.turquoiseColor()
+        preferenceButton.shadowColor = UIColor.greenSeaColor()
+        preferenceButton.shadowHeight = 3.0
+        preferenceButton.cornerRadius = 2.0
+        preferenceButton.titleLabel!.font = UIFont(name:"PixelMplus12", size: 16)
+        preferenceButton.setTitleColor(UIColor.cloudsColor(), forState: UIControlState.Normal)
+        preferenceButton.setTitleColor(UIColor.cloudsColor(), forState: UIControlState.Highlighted)
+        
+        debugTextView.font = UIFont(name:"PixelMplus12", size: 16)
     }
     
     override func viewWillAppear(animated: Bool) {
