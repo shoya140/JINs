@@ -136,7 +136,7 @@ class JMMapViewController: UIViewController, MEMELibDelegate, CLLocationManagerD
         
         var map:String = "10"
         if _isNuma {
-            map = "20"
+            map = "22"
         }
         _isNuma = false
         
